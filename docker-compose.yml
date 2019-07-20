@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  application:
+    image: debian
+    volumes:
+      - ./:/go/src/github.com/dung13890/go-truck
+  truck:
+    image: dung13890/go-env
+    restart: on-failure
+    volumes_from:
+      - application
+    working_dir: /go/src/github.com/dung13890/go-truck
+    environment:
+      - GOBIN=/go/bin
+    ports:
+      - "3000:3000"
+    tty: true
