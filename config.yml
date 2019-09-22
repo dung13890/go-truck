@@ -1,0 +1,20 @@
+webservers:
+  hosts:
+    server1:
+      address: "127.0.0.1"
+      user: "local"
+      dir: "/var/www/project"
+    server2:
+      address: "127.0.0.2"
+      user: "local"
+      dir: "/var/www/project"
+  tasks:
+    - name: "install project"
+      cmd: "git pull origin"
+      args:
+        - "master"
+    - name: "Install dependencies"
+      cmd: "yarn install"
+    - name: "Build project"
+      cmd: "yarn run product"
+
